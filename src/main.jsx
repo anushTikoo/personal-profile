@@ -327,7 +327,7 @@ function BookCard({ book, index }) {
 
 function App() {
   const [introVisible, setIntroVisible] = useState(false);
-  const [theme, setTheme] = useStoredPreference('anush-theme', false);
+  const [theme, setTheme] = useStoredPreference('anush-theme-v2', true);
   const [motionOff, setMotionOff] = useStoredPreference('anush-motion-off', useReducedMotionDefault());
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [dialog, setDialog] = useState(null);
@@ -344,9 +344,9 @@ function App() {
   }, []);
 
   useEffect(() => {
-    try { setIntroVisible(!sessionStorage.getItem('anush-intro-seen') && !useReducedMotionDefault()); }
+    try { setIntroVisible(!sessionStorage.getItem('anush-intro-seen') && !motionOff && !useReducedMotionDefault()); }
     catch { setIntroVisible(false); }
-  }, []);
+  }, [motionOff]);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme ? 'dark' : 'light';

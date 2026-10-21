@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f5f4ef" />
+    <meta name="theme-color" content="#181916" />
     <meta name="description" content="Anush Tikoo — computer engineering student at VJTI, builder of thoughtful software, chess player and reader." />
     <title>Anush Tikoo — Personal Profile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,6 +11,14 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <script>
+      try {
+        const savedTheme = localStorage.getItem('anush-theme-v2');
+        document.documentElement.dataset.theme = savedTheme === null || savedTheme === 'true' ? 'dark' : 'light';
+      } catch {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
